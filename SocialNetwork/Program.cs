@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using SocialNetwork.Data;
 using Microsoft.AspNetCore.Identity;
+using SocialNetwork.Data.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
