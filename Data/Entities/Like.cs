@@ -1,4 +1,4 @@
-﻿namespace SocialNetwork.Data.Entities
+﻿namespace Data.Entities
 {
     public class Like
     {

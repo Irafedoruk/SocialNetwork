@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SocialNetwork.Data.Entities;
 using System.Reflection.Emit;
 
-namespace SocialNetwork.Data
+namespace Data
 {
     public class SocialNetworkDbContext : IdentityDbContext<User>
     {
@@ -18,9 +18,12 @@ namespace SocialNetwork.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Like>().HasOne(i => i.User).WithMany(i => i.Likes).HasForeignKey(i => i.UserId).OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Photo>().HasOne(p => p.User).WithMany(u => u.Photos).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
         }        
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }
