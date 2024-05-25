@@ -29,7 +29,7 @@ namespace SocialNetwork.Controllers
                 if (result.Succeeded)
                 {
                     await this.signInManager.SignInAsync(user, isPersistent: false);
-                    return Ok(new { result = "User registered" });
+                    return Ok(new { result = "Registration successful" });
                 }
                 foreach (var error in result.Errors)
                 {
@@ -47,7 +47,7 @@ namespace SocialNetwork.Controllers
                 var result = await this.signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return Ok(new { result = "User logged in" });
+                    return Ok(new { result = "Login successful" });
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
