@@ -11,5 +11,6 @@ namespace Data.Entities
         public ICollection<Photo>? Photos { get; set; }
         public ICollection<Message>? SentMessages { get; set; }
         public ICollection<Message>? ReceivedMessages { get; set; }
+        public ICollection<User>? Friends { get; set; }
     }
 }

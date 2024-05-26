@@ -49,7 +49,7 @@ namespace SocialNetwork.Controllers
                 {
                     return Ok(new { result = "Login successful" });
                 }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                ModelState.AddModelError(string.Empty, "Invalid user login or password.");
             }
             return BadRequest(ModelState);
         }

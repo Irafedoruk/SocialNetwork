@@ -46,6 +46,15 @@ namespace Data
                 .WithMany(u => u.ReceivedMessages)
                 .HasForeignKey(m => m.ReceiverId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Friends)
+                .WithMany()
+                .UsingEntity<Dictionary<string, object>>(
+                    "UserFriend",
+                    j => j.HasOne<User>().WithMany().HasForeignKey("FriendId"),
+                    j => j.HasOne<User>().WithMany().HasForeignKey("UserId")
+                );
         }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
